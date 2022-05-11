@@ -96,6 +96,7 @@ end)
 
 function OnPlayerDeath()
 	isDead = true
+    ESX.SetPlayerData('dead', true)  
 	ESX.UI.Menu.CloseAll()
 	TriggerServerEvent('esx_ambulancejob:setDeathStatus', true)
 
@@ -331,6 +332,7 @@ function RespawnPed(ped, coords, heading)
 	NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, heading, true, false)
 	SetPlayerInvincible(ped, false)
 	ClearPedBloodDamage(ped)
+    ESX.SetPlayerData('dead', false)  
 
 	TriggerServerEvent('esx:onPlayerSpawn')
 	TriggerEvent('esx:onPlayerSpawn')
