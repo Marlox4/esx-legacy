@@ -11,7 +11,7 @@ CreateThread(function()
 			if IsPedFatallyInjured(playerPed) and not isDead then
 				sleep = 0
 				isDead = true
-
+				ESX.SetPlayerData('isDead', true)
 				local killerEntity, deathCause = GetPedSourceOfDeath(playerPed), GetPedCauseOfDeath(playerPed)
 				local killerClientId = NetworkGetPlayerIndexFromPed(killerEntity)
 
@@ -24,6 +24,7 @@ CreateThread(function()
 			elseif not IsPedFatallyInjured(playerPed) and isDead then
 				sleep = 0
 				isDead = false
+				ESX.SetPlayerData('isDead', false)
 			end
 		end
 	Wait(sleep)
